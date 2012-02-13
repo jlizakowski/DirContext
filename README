@@ -1,0 +1,19 @@
+
+Usage:
+=========
+
+require 'dir_context'
+
+Dir.context(Git.root) {   #if Git.root exists
+	require 'mytool.rb'
+}
+
+Dir.context("./other/mytool/src/") {
+	require 'mytool.rb'
+}
+
+Dir.context(Rails.root) {
+	Dir.context("lib") {   # nesting supported, fwiw.
+		require 'mylib'
+	}
+}
